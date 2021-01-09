@@ -258,7 +258,6 @@ ApplicationWindow {
         height: parent.height-50
         padding: 0
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
-        property string categorySelected : ""
 
         // background of title
         Rectangle {
@@ -973,7 +972,6 @@ ApplicationWindow {
             }
             else
             {
-                ospopup.categorySelected = d.name
                 var suburl = d.subitems_url
                 var m = newSublist()
 
@@ -1011,7 +1009,7 @@ ApplicationWindow {
                 }
             }
         } else {
-            imageWriter.setSrc(d.url, d.image_download_size, d.extract_size, typeof(d.extract_sha256) != "undefined" ? d.extract_sha256 : "", typeof(d.contains_multiple_files) != "undefined" ? d.contains_multiple_files : false, ospopup.categorySelected, d.name)
+            imageWriter.setSrc(d.url, d.image_download_size, d.extract_size, typeof(d.extract_sha256) != "undefined" ? d.extract_sha256 : "", typeof(d.contains_multiple_files) != "undefined" ? d.contains_multiple_files : false)
             osbutton.text = d.name
             ospopup.close()
             if (imageWriter.readyToWrite()) {

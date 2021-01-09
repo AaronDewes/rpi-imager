@@ -476,7 +476,7 @@ void ImageWriter::openFileDialog()
 {
 #ifndef QT_NO_WIDGETS
     QSettings settings;
-    QString path = settings.value("lastpath").toString();
+    QString path = settings.value("General/lastpath").toString();
     QFileInfo fi(path);
 
     if (path.isEmpty() || !fi.exists() || !fi.isReadable() )
@@ -511,9 +511,9 @@ void ImageWriter::onFileSelected(QString filename)
     if (fi.isFile())
     {
         QString path = fi.path();
-        if (path != settings.value("lastpath"))
+        if (path != settings.value("General/lastpath"))
         {
-            settings.setValue("lastpath", path);
+            settings.setValue("General/lastpath", path);
             settings.sync();
         }
 

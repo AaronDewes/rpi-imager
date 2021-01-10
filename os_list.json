@@ -2,7 +2,6 @@
     "os_list": [
         {
             "name": "Umbrel OS 0.3.1",
-            "description": "The official operating system for Umbrel. Requires 4GB of RAM or more.",
             "icon": "icons/umbrel.png",
             "url": "https://github.com/getumbrel/umbrel-os/releases/download/v0.3.1/umbrel-os-v0.3.1.zip",
             "release_date": "2021-01-03"

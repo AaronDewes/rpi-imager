@@ -23,5 +23,6 @@
         <file>icons/cat_media_players.png</file>
         <file>icons/cat_emulation_and_games.png</file>
         <file>icons/labs.png</file>
+        <file>icons/umbrel.png</file>
     </qresource>
 </RCC>

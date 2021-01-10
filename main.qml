@@ -20,7 +20,7 @@ ApplicationWindow {
     minimumHeight: imageWriter.isEmbeddedMode() ? -1 : 420
     maximumHeight: imageWriter.isEmbeddedMode() ? -1 : 420
 
-    title: qsTr("Raspberry Pi Imager v%1").arg(imageWriter.constantVersion())
+    title: qsTr("Umbrel Labs Imager v%1").arg(imageWriter.constantVersion())
 
     FontLoader {id: roboto;      source: "fonts/Roboto-Regular.ttf"}
     FontLoader {id: robotoLight; source: "fonts/Roboto-Light.ttf"}
@@ -55,14 +55,14 @@ ApplicationWindow {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 fillMode: Image.PreserveAspectFit
-                source: imageWriter.isEmbeddedMode() ? "icons/rpi2-hires.png" : "icons/rpi2.png"
+                source: imageWriter.isEmbeddedMode() ? "icons/rpi2-hires.png" : "icons/labs.png"
                 width: window.width
                 height: window.height/2
             }
         }
 
         Rectangle {
-            color: "#c31c4a"
+            color: "#5351fb"
             implicitWidth: window.width
             implicitHeight: window.height/2
 
@@ -112,7 +112,7 @@ ApplicationWindow {
                             osswipeview.currentItem.forceActiveFocus()
                         }
                         Material.background: "#ffffff"
-                        Material.foreground: "#c51a4a"
+                        Material.foreground: "#5351fb"
                         Accessible.ignored: ospopup.visible || dstpopup.visible
                         Accessible.description: qsTr("Select this button to change the operating system")
                         Accessible.onPressAction: clicked()
@@ -150,7 +150,7 @@ ApplicationWindow {
                             dstlist.forceActiveFocus()
                         }
                         Material.background: "#ffffff"
-                        Material.foreground: "#c51a4a"
+                        Material.foreground: "#5351fb"
                         Accessible.ignored: ospopup.visible || dstpopup.visible
                         Accessible.description: qsTr("Select this button to change the destination SD card")
                         Accessible.onPressAction: clicked()
@@ -178,7 +178,7 @@ ApplicationWindow {
 
                         enabled: false
                         Material.background: "#ffffff"
-                        Material.foreground: "#c51a4a"
+                        Material.foreground: "#5351fb"
                         onClicked: {
                             if (!imageWriter.readyToWrite())
                                 return;
@@ -221,7 +221,7 @@ ApplicationWindow {
                             imageWriter.cancelWrite()
                         }
                         Material.background: "#ffffff"
-                        Material.foreground: "#c51a4a"
+                        Material.foreground: "#5351fb"
                         Layout.alignment: Qt.AlignRight
                         visible: false
                         font.family: roboto.name
@@ -236,7 +236,7 @@ ApplicationWindow {
                             imageWriter.setVerifyEnabled(false)
                         }
                         Material.background: "#ffffff"
-                        Material.foreground: "#c51a4a"
+                        Material.foreground: "#5351fb"
                         Layout.alignment: Qt.AlignRight
                         visible: false
                         font.family: roboto.name
@@ -729,7 +729,7 @@ ApplicationWindow {
         yesButton: true
         noButton: true
         title: qsTr("Are you sure you want to quit?")
-        text: qsTr("Raspberry Pi Imager is still busy.<br>Are you sure you want to quit?")
+        text: qsTr("Umbrel Labs Imager is still busy.<br>Are you sure you want to quit?")
         onYes: {
             Qt.quit()
         }

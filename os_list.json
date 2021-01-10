@@ -1,0 +1,28 @@
+{
+    "os_list": [
+        {
+            "name": "Umbrel OS 0.3.1",
+            "description": "The official operating system for Umbrel. Requires 4GB of RAM or more.",
+            "icon": "https://getumbrel.com/images/umbrel-logo.svg",
+            "url": "https://github.com/getumbrel/umbrel-os/releases/download/v0.3.1/umbrel-os-v0.3.1.zip",
+            "release_date": "2021-01-03"
+        },
+        {
+            "name": "Misc utility images",
+            "description": "EEPROM recovery, etc.",
+            "icon": "icons/ic_build_48px.svg",
+            "subitems": [
+                {
+                    "name": "Raspberry Pi 4 EEPROM boot recovery",
+                    "description": "Use this only if advised to do so",
+                    "icon": "https://downloads.raspberrypi.org/raspios_armhf/Raspberry_Pi_OS_(32-bit).png",
+                    "url": "https://github.com/raspberrypi/rpi-eeprom/releases/download/v2020.09.03-138a1/rpi-boot-eeprom-recovery-2020-09-03-vl805-000138a1.zip",
+                    "contains_multiple_files": true,
+                    "extract_size": 722892,
+                    "image_download_size": 298096,
+                    "release_date": "2020-09-14"
+                }
+            ]
+        }
+    ]
+}

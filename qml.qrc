@@ -2,7 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
-        <file>icons/rpi-imager.ico</file>
+        <file>icons/umbrel-imager.ico</file>
         <file>icons/rpi2.png</file>
         <file>fonts/Roboto-Bold.ttf</file>
         <file>fonts/Roboto-Light.ttf</file>
@@ -22,5 +22,6 @@
         <file>icons/cat_misc_utility_images.png</file>
         <file>icons/cat_media_players.png</file>
         <file>icons/cat_emulation_and_games.png</file>
+        <file>icons/labs.png</file>
     </qresource>
 </RCC>

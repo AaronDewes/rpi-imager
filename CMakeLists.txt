@@ -6,9 +6,9 @@ if (APPLE)
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.13" CACHE STRING "" FORCE)
 endif()
 
-project(rpi-imager LANGUAGES CXX)
-set(IMAGER_VERSION_MAJOR 1)
-set(IMAGER_VERSION_MINOR 5)
+project(umbrel-imager LANGUAGES CXX)
+set(IMAGER_VERSION_MAJOR 0)
+set(IMAGER_VERSION_MINOR 1)
 set(IMAGER_VERSION_STR "${IMAGER_VERSION_MAJOR}.${IMAGER_VERSION_MINOR}")
 set(IMAGER_VERSION_CSV "${IMAGER_VERSION_MAJOR},${IMAGER_VERSION_MINOR},0,0")
 add_definitions(-DIMAGER_VERSION_STR="${IMAGER_VERSION_STR}")
@@ -24,9 +24,9 @@ set(HEADERS config.h imagewriter.h networkaccessmanagerfactory.h nan.h drivelist
 
 # Add dependencies
 if (APPLE)
-    set_source_files_properties("icons/rpi-imager.icns" PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+    set_source_files_properties("icons/umbrel-imager.icns" PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
     set(DEPENDENCIES acceleratedcryptographichash.cpp mac/macfile.cpp mac/macfile.h dependencies/mountutils/src/darwin/functions.cpp
-        dependencies/drivelist/src/darwin/list.mm dependencies/drivelist/src/darwin/REDiskList.m icons/rpi-imager.icns)
+        dependencies/drivelist/src/darwin/list.mm dependencies/drivelist/src/darwin/REDiskList.m icons/umbrel-imager.icns)
     enable_language(OBJC C)
 elseif (UNIX)
     set(DEPENDENCIES acceleratedcryptographichash.cpp dependencies/mountutils/src/linux/functions.cpp linux/linuxdrivelist.cpp)
@@ -41,7 +41,7 @@ elseif (UNIX)
 elseif (WIN32)
     set(DEPENDENCIES acceleratedcryptographichash.cpp dependencies/mountutils/src/windows/functions.cpp dependencies/drivelist/src/windows/list.cpp
         windows/winfile.cpp windows/winfile.h
-        windows/rpi-imager.rc)
+        windows/umbrel-imager.rc)
     find_package(Qt5WinExtras REQUIRED)
     set(EXTRALIBS setupapi Qt5::WinExtras)
 endif()
@@ -76,8 +76,8 @@ if (Qt5Widgets_FOUND)
     set(EXTRALIBS ${EXTRALIBS} Qt5::Widgets)
 endif()
 
-#qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} i18n/rpi-imager_en.ts i18n/rpi-imager_nl.ts i18n/rpi-imager_zh_cn.ts i18n/rpi-imager_tr.ts i18n/rpi-imager_fr.ts i18n/rpi-imager_de.ts i18n/rpi-imager_sk.ts i18n/rpi-imager_it.ts)
-qt5_add_translation(QM_FILES i18n/rpi-imager_en.ts i18n/rpi-imager_nl.ts i18n/rpi-imager_zh_cn.ts i18n/rpi-imager_tr.ts i18n/rpi-imager_fr.ts i18n/rpi-imager_de.ts i18n/rpi-imager_sk.ts i18n/rpi-imager_it.ts)
+#qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} i18n/umbrel-imager_en.ts i18n/umbrel-imager_nl.ts i18n/umbrel-imager_zh_cn.ts i18n/umbrel-imager_tr.ts i18n/umbrel-imager_fr.ts i18n/umbrel-imager_de.ts i18n/umbrel-imager_sk.ts i18n/umbrel-imager_it.ts)
+qt5_add_translation(QM_FILES i18n/umbrel-imager_en.ts i18n/umbrel-imager_nl.ts i18n/umbrel-imager_zh_cn.ts i18n/umbrel-imager_tr.ts i18n/umbrel-imager_fr.ts i18n/umbrel-imager_de.ts i18n/umbrel-imager_sk.ts i18n/umbrel-imager_it.ts)
 configure_file(i18n/translations.qrc "${CMAKE_CURRENT_BINARY_DIR}" COPYONLY)
 set(SOURCES ${SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc ${QM_FILES})
 
@@ -167,13 +167,13 @@ if (WIN32)
             "${CMAKE_BINARY_DIR}/deploy")
 
     configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/windows/rpi-imager.nsi.in"
-        "${CMAKE_CURRENT_BINARY_DIR}/rpi-imager.nsi"
+        "${CMAKE_CURRENT_SOURCE_DIR}/windows/umbrel-imager.nsi.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/umbrel-imager.nsi"
         @ONLY)
 
     add_custom_command(TARGET ${PROJECT_NAME}
         POST_BUILD
-        COMMAND "${WINDEPLOYQT}" --no-translations --no-webkit2 --no-opengl-sw --angle --qmldir "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/deploy/rpi-imager.exe")
+        COMMAND "${WINDEPLOYQT}" --no-translations --no-webkit2 --no-opengl-sw --angle --qmldir "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/deploy/umbrel-imager.exe")
 
     # Remove excess files
     add_custom_command(TARGET ${PROJECT_NAME}
@@ -237,14 +237,14 @@ else()
     endif()
 
     configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/linux/rpi-imager.metainfo.xml.in"
-        "${CMAKE_CURRENT_BINARY_DIR}/rpi-imager.metainfo.xml"
+        "${CMAKE_CURRENT_SOURCE_DIR}/linux/umbrel-imager.metainfo.xml.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/umbrel-imager.metainfo.xml"
         @ONLY)
 
-    install(TARGETS rpi-imager DESTINATION bin)
-    install(FILES icons/rpi-imager.png DESTINATION share/icons/hicolor/128x128/apps)
-    install(FILES linux/rpi-imager.desktop DESTINATION share/applications)
-    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/rpi-imager.metainfo.xml" DESTINATION share/metainfo)
+    install(TARGETS umbrel-imager DESTINATION bin)
+    install(FILES icons/umbrel-imager.png DESTINATION share/icons/hicolor/128x128/apps)
+    install(FILES linux/umbrel-imager.desktop DESTINATION share/applications)
+    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/umbrel-imager.metainfo.xml" DESTINATION share/metainfo)
 endif()
 
 get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)

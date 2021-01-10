@@ -8,7 +8,7 @@
 
 
 /* Repository URL */
-#define OSLIST_URL                        "https://downloads.raspberrypi.org/os_list_imagingutility.json"
+#define OSLIST_URL                        "https://raw.githubusercontent.com/AaronDewes/umbrel-imager/os_list.json"
 
 /* Time synchronization URL (only used on eglfs QPA platform, URL must be HTTP) */
 #define TIME_URL                          "http://downloads.raspberrypi.org/os_list_imagingutility.json?time_synchronization"

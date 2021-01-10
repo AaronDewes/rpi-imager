@@ -11,14 +11,14 @@
 !define INSTALLER_NAME "imager-${VERSION}.exe"
 !define COPYRIGHT "Raspberry Pi"
 !define DESCRIPTION "Raspberry Pi Imager"
-!define MAIN_APP_EXE "rpi-imager.exe"
+!define MAIN_APP_EXE "umbrel-imager.exe"
 !define INSTALL_TYPE "SetShellVarContext current"
 !define REG_ROOT "HKCU"
 !define REG_APP_PATH "Software\Microsoft\Windows\CurrentVersion\App Paths\${MAIN_APP_EXE}"
 !define UNINSTALL_PATH "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}"
 
 # Window to close if running
-!define EXE_TO_TERMINATE "rpi-imager.exe"
+!define EXE_TO_TERMINATE "umbrel-imager.exe"
 
 ######################################################################
 
@@ -243,7 +243,7 @@ File "deploy\Qt5QuickTemplates2.dll"
 File "deploy\Qt5Svg.dll"
 File "deploy\Qt5Widgets.dll"
 File "deploy\Qt5WinExtras.dll"
-File "deploy\rpi-imager.exe"
+File "deploy\umbrel-imager.exe"
 SetOutPath "$INSTDIR\styles"
 File "deploy\styles\qwindowsvistastyle.dll"
 SetOutPath "$INSTDIR\QtQuick.2"
@@ -666,7 +666,7 @@ WriteRegStr SHCTX "Software\Classes\.gz\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
 WriteRegStr SHCTX "Software\Classes\.xz\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
 WriteRegStr SHCTX "Software\Classes\.img\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
 WriteRegStr SHCTX "Software\Classes\RPI_IMAGINGUTILITY\shell\open" "FriendlyAppName" "Raspberry Pi Imager"
-WriteRegStr SHCTX "Software\Classes\RPI_IMAGINGUTILITY\shell\open\command" "" '"$INSTDIR\rpi-imager.exe" "%1"'
+WriteRegStr SHCTX "Software\Classes\RPI_IMAGINGUTILITY\shell\open\command" "" '"$INSTDIR\umbrel-imager.exe" "%1"'
 
 SectionEnd
 
@@ -699,7 +699,7 @@ Delete "$INSTDIR\Qt5Widgets.dll"
 Delete "$INSTDIR\Qt5WinExtras.dll"
 # Old name
 Delete "$INSTDIR\imagingutility.exe"
-Delete "$INSTDIR\rpi-imager.exe"
+Delete "$INSTDIR\umbrel-imager.exe"
 Delete "$INSTDIR\styles\qwindowsvistastyle.dll"
 Delete "$INSTDIR\QtQuick.2\plugins.qmltypes"
 Delete "$INSTDIR\QtQuick.2\qmldir"

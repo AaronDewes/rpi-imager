@@ -52,10 +52,10 @@ int main(int argc, char *argv[])
 #else
     QApplication app(argc, argv);
 #endif
-    app.setOrganizationName("Raspberry Pi");
-    app.setOrganizationDomain("raspberrypi.org");
+    app.setOrganizationName("Umbrel Labs");
+    app.setOrganizationDomain("UmbrelLabs.gitlab.io");
     app.setApplicationName("Imager");
-    app.setWindowIcon(QIcon(":/icons/rpi-imager.ico"));
+    app.setWindowIcon(QIcon(":/icons/umbrel-imager.ico"));
     ImageWriter imageWriter;
     NetworkAccessManagerFactory namf;
     QQmlApplicationEngine engine;
@@ -161,7 +161,7 @@ int main(int argc, char *argv[])
 
     if (customQm.isEmpty())
     {
-        if (translator.load(QLocale(), "rpi-imager", "_", QLatin1String(":/i18n")))
+        if (translator.load(QLocale(), "umbrel-imager", "_", QLatin1String(":/i18n")))
             QCoreApplication::installTranslator(&translator);
     }
     else

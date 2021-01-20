@@ -122,7 +122,9 @@ Popup {
                     CheckBox {
                         id: chkSSH
                         text: qsTr("Enable SSH")
+                        checked: true
                         onCheckedChanged: {
+                            checked: true
                             if (checked) {
                                 if (!radioPasswordAuthentication.checked && !radioPubKeyAuthentication.checked) {
                                     radioPasswordAuthentication.checked = true
@@ -279,10 +281,6 @@ Popup {
                             Layout.minimumWidth: 200
                             text: "us"
                         }
-                        CheckBox {
-                            id: chkSkipFirstUse
-                            text: qsTr("Skip first-run wizard")
-                        }
                     }
                 }
             }
@@ -434,10 +432,6 @@ Popup {
             addFirstRun("done")
         }
         if (chkLocale.checked) {
-            if (chkSkipFirstUse) {
-                addFirstRun("rm -f /etc/xdg/autostart/piwiz.desktop")
-            }
-
             addFirstRun("rm -f /etc/localtime")
             addFirstRun("echo \""+fieldTimezone.editText+"\" >/etc/timezone")
             addFirstRun("dpkg-reconfigure -f noninteractive tzdata")

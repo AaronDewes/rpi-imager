@@ -166,6 +166,42 @@ ApplicationWindow {
                 }
 
                 ColumnLayout {
+                    id: columnLayoutforoptions
+                    spacing: 0
+                    Layout.fillWidth: true
+
+                    Text {
+                        id: text4
+                        color: "#ffffff"
+                        text: qsTr("Additional options")
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: 17
+                        Layout.preferredWidth: 100
+                        font.pixelSize: 12
+                        font.family: robotoBold.name
+                        font.bold: true
+                        horizontalAlignment: Text.AlignHCenter
+                    }
+
+                    Button {
+                        id: cfgbutton
+                        text: qsTr("CONFIGURE UMBREL OS")
+                        font.family: roboto.name
+                        Layout.minimumHeight: 40
+                        Layout.preferredWidth: 100
+                        Layout.fillWidth: true
+                        onClicked: {
+                            optionspopup.openPopup()
+                        }
+                        Material.background: "#ffffff"
+                        Material.foreground: "#5351fb"
+                        Accessible.ignored: ospopup.visible || dstpopup.visible || optionspopup.visible
+                        Accessible.description: qsTr("Select this button to change a few settings")
+                        Accessible.onPressAction: clicked()
+                    }
+                }
+
+                ColumnLayout {
                     spacing: 0
                     Layout.fillWidth: true
 
@@ -181,7 +217,7 @@ ApplicationWindow {
                         font.family: roboto.name
                         Layout.minimumHeight: 40
                         Layout.fillWidth: true
-                        Accessible.ignored: ospopup.visible || dstpopup.visible
+                        Accessible.ignored: ospopup.visible || dstpopup.visible || optionspopup.visible
                         Accessible.description: qsTr("Select this button to start writing the image")
 
                         enabled: false
@@ -430,7 +466,7 @@ ApplicationWindow {
         Item {
             width: window.width-100
             height: image_download_size ? 100 : 60
-            Accessible.name: name+".\n"+description
+            Accessible.name: name
 
             Rectangle {
                id: bgrect
@@ -473,8 +509,7 @@ ApplicationWindow {
                         font.family: roboto.name
                         textFormat: Text.RichText
                         text: {
-                            var txt = "<p style='margin-bottom: 5px;'><b>"+name+"</b></p>"
-                            txt += "<font color='#1a1a1a'>"+description+"</font><font style='font-weight: 200' color='#646464'>"
+                            var txt = "<b>"+name+"</b>"
                             if (typeof(release_date) == "string" && release_date)
                                 txt += "<br>"+qsTr("Released: %1").arg(release_date)
                             if (typeof(url) == "string" && url != "" && url != "internal://format") {
@@ -483,7 +518,7 @@ ApplicationWindow {
                                 } else if (url.startsWith("file://")) {
                                     txt += "<br>"+qsTr("Local file")
                                 } else {
-                                    txt += "<br>"+qsTr("Online - %1 GB download").arg((image_download_size/1073741824).toFixed(1));
+                                    txt += "<br>"+qsTr("Online");
                                 }
                             }
                             txt += "</font>";
@@ -493,7 +528,7 @@ ApplicationWindow {
 
                         /*
                         Accessible.role: Accessible.ListItem
-                        Accessible.name: name+".\n"+description
+                        Accessible.name: name
                         Accessible.focusable: true
                         Accessible.focused: parent.parent.parent.ListView.view.currentIndex === index
                         */

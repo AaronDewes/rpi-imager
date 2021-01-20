@@ -3,7 +3,7 @@
         {
             "name": "Umbrel OS",
             "icon": "icons/umbrel.png",
-            "url": "https://github.com/getumbrel/umbrel-os/releases/download/v0.3.1/umbrel-os-v0.3.1.zip"
+            "url": "https://github.com/getumbrel/umbrel-os/releases/download/v0.3.2/umbrel-os-v0.3.2.zip"
         },
         {
             "name": "Misc utility images",

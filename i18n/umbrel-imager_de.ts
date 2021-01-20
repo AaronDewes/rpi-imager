@@ -35,7 +35,7 @@
     <message>
         <location filename="../downloadthread.cpp" line="110"/>
         <source>opening drive</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerät wird geöffnet</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="143"/>
@@ -73,12 +73,12 @@ Bitte stellen Sie sicher, dass &apos;Raspberry Pi Imager&apos; Zugriff auf &apos
     <message>
         <location filename="../downloadthread.cpp" line="257"/>
         <source>discarding existing data on drive</source>
-        <translation type="unfinished"></translation>
+        <translation>Existierende Daten auf dem Gerät werden gelöscht</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="277"/>
         <source>zeroing out first and last MB of drive</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstes und Letztes MB des Geräts weirden gelöscht</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="283"/>
@@ -93,7 +93,7 @@ Bitte stellen Sie sicher, dass &apos;Raspberry Pi Imager&apos; Zugriff auf &apos
     <message>
         <location filename="../downloadthread.cpp" line="353"/>
         <source>starting download</source>
-        <translation type="unfinished"></translation>
+        <translation>Download wird gestartet</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="741"/>
@@ -121,7 +121,7 @@ Controlled Folder Access sheint aktiviert zu sein. Bitte fügen Sie sowohl umbre
     <message>
         <location filename="../downloadthread.cpp" line="425"/>
         <source>Error downloading: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler beim Download: %1</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="632"/>
@@ -232,7 +232,7 @@ Controlled Folder Access sheint aktiviert zu sein. Bitte fügen Sie sowohl umbre
     <message>
         <location filename="../localfileextractthread.cpp" line="34"/>
         <source>opening image file</source>
-        <translation type="unfinished"></translation>
+        <translation>Image wird geöffnet</translation>
     </message>
     <message>
         <location filename="../localfileextractthread.cpp" line="39"/>
@@ -420,17 +420,17 @@ Controlled Folder Access sheint aktiviert zu sein. Bitte fügen Sie sowohl umbre
     <message>
         <location filename="../main.qml" line="752"/>
         <source>Preparing to write...</source>
-        <translation type="unfinished"></translation>
+        <translation>Schreiben wird vorbereitet...</translation>
     </message>
     <message>
         <location filename="../main.qml" line="776"/>
         <source>Update available</source>
-        <translation type="unfinished"></translation>
+        <translation>Update verfügbar</translation>
     </message>
     <message>
         <location filename="../main.qml" line="777"/>
         <source>There is a newer version of Imager available.&lt;br&gt;Would you like to visit the website to download it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Eine neue Version von Imager ist verfügbar.&lt;br&gt; Möchten Sie diese herunterladen?</translation>
     </message>
     <message>
         <location filename="../main.qml" line="818"/>
@@ -455,7 +455,7 @@ Controlled Folder Access sheint aktiviert zu sein. Bitte fügen Sie sowohl umbre
     <message>
         <location filename="../main.qml" line="848"/>
         <source>Preparing to write... (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Schreiben wird vorbereitet... (%1)</translation>
     </message>
     <message>
         <location filename="../main.qml" line="863"/>

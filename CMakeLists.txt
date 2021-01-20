@@ -6,9 +6,9 @@ if (APPLE)
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.13" CACHE STRING "" FORCE)
 endif()
 
-project(umbrel-imager LANGUAGES CXX)
+project(umbrel-imager LANGUAGES CXX C)
 set(IMAGER_VERSION_MAJOR 0)
-set(IMAGER_VERSION_MINOR 1)
+set(IMAGER_VERSION_MINOR 2)
 set(IMAGER_VERSION_STR "${IMAGER_VERSION_MAJOR}.${IMAGER_VERSION_MINOR}")
 set(IMAGER_VERSION_CSV "${IMAGER_VERSION_MAJOR},${IMAGER_VERSION_MINOR},0,0")
 add_definitions(-DIMAGER_VERSION_STR="${IMAGER_VERSION_STR}")
@@ -20,7 +20,7 @@ set(CMAKE_AUTORCC ON)
 
 # Adding headers explicity so they are displayed in Qt Creator
 set(HEADERS config.h imagewriter.h networkaccessmanagerfactory.h nan.h drivelistitem.h drivelistmodel.h drivelistmodelpollthread.h driveformatthread.h powersaveblocker.h
-    downloadthread.h downloadextractthread.h localfileextractthread.h dependencies/mountutils/src/mountutils.hpp)
+    downloadthread.h downloadextractthread.h localfileextractthread.h dependencies/mountutils/src/mountutils.hpp dependencies/sha256crypt/sha256crypt.h)
 
 # Add dependencies
 if (APPLE)
@@ -43,7 +43,7 @@ elseif (WIN32)
         windows/winfile.cpp windows/winfile.h
         windows/umbrel-imager.rc)
     find_package(Qt5WinExtras REQUIRED)
-    set(EXTRALIBS setupapi Qt5::WinExtras)
+    set(EXTRALIBS setupapi wlanapi Qt5::WinExtras)
 endif()
 
 include_directories(BEFORE .)
@@ -69,7 +69,7 @@ endif()
 
 set(SOURCES "main.cpp" "imagewriter.cpp" "networkaccessmanagerfactory.cpp"
     "drivelistitem.cpp" "drivelistmodel.cpp" "drivelistmodelpollthread.cpp" "downloadthread.cpp" "downloadextractthread.cpp"
-     "driveformatthread.cpp" "localfileextractthread.cpp" "powersaveblocker.cpp" "qml.qrc")
+     "driveformatthread.cpp" "localfileextractthread.cpp" "powersaveblocker.cpp" "qml.qrc" "dependencies/sha256crypt/sha256crypt.c")
 
 find_package(Qt5 COMPONENTS Core Quick LinguistTools Svg OPTIONAL_COMPONENTS Widgets)
 if (Qt5Widgets_FOUND)

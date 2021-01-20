@@ -331,7 +331,7 @@
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="188"/>
-        <source>Set authorized_keys for &apos;pi&apos;:</source>
+        <source>Set authorized_keys for &apos;umbrel&apos;:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

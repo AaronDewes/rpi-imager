@@ -185,7 +185,7 @@ Popup {
                             enabled: radioPubKeyAuthentication.checked
 
                             Text {
-                                text: qsTr("Set authorized_keys for 'pi':")
+                                text: qsTr("Set authorized_keys for 'umbrel':")
                                 color: parent.enabled ? "black" : "grey"
                             }
                             TextField {

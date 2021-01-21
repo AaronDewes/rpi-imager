@@ -1,10 +1,5 @@
 # umbrel-imager
 
-Raspberry Pi Imaging Utility
-
-- Download the latest version for Windows, macOS and Ubuntu from the [Raspberry Pi downloads page](https://www.raspberrypi.org/downloads/).
-- To install on Raspberry Pi OS, use `sudo apt update && sudo apt install umbrel-imager`.
-
 ## License
 
 The main code of the Imaging Utility is made available under the terms of the Apache license.
@@ -27,7 +22,7 @@ sudo apt install --no-install-recommends build-essential devscripts debhelper cm
 #### Get the source
 
 ```
-git clone --depth 1 https://github.com/raspberrypi/umbrel-imager
+git clone --depth 1 https://github.com/AaronDewes//umbrel-imager
 ```
 
 #### Build the Debian package
@@ -62,7 +57,7 @@ sudo yum install git gcc gcc-c++ make cmake libarchive-devel libcurl-devel opens
 #### Get the source
 
 ```
-git clone --depth 1 https://github.com/raspberrypi/rpi-imager
+git clone --depth 1 https://github.com/AaronDewes/rpi-imager
 ```
 
 #### Build and install the software
@@ -123,9 +118,9 @@ E.g.:
 ```
 cd build-umbrel-imager-Desktop_Qt_5_14_1_clang_64bit-Release/
 codesign --deep --force --verify --verbose --sign "YOUR KEYID" --options runtime umbrel-imager.app
-mv umbrel-imager.app "Raspberry Pi Imager.app"
+mv umbrel-imager.app "Umbrel Imager.app"
 create-dmg Raspberry\ Pi\ Imager.app
-mv Raspberry\ Pi\ Imager\ .dmg imager.dmg
+mv Umbrel\ Imager\ .dmg imager.dmg
 xcrun altool --notarize-app -t osx -f imager.dmg --primary-bundle-id="org.raspberrypi.imagingutility" -u YOUR-EMAIL-ADDRESS -p YOUR-APP-SPECIFIC-APPLE-PASSWORD -itc_provider TEAM-ID-IF-APPLICABLE
 xcrun stapler staple imager.dmg
 ```

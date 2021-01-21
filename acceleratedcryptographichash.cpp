@@ -6,6 +6,7 @@
  */
 
 #include "acceleratedcryptographichash.h"
+#include <openssl/sha.h>
 
 AcceleratedCryptographicHash::AcceleratedCryptographicHash(QCryptographicHash::Algorithm method)
 {

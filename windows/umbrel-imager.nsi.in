@@ -4,13 +4,13 @@
 #              by Vlasis K. Barkas aka Red Wine red_wine@freemail.gr Sep 2006               
 ############################################################################################
 
-!define APP_NAME "Raspberry Pi Imager"
-!define COMP_NAME "Raspberry Pi"
-#!define WEB_SITE "https://www.raspberrypi.org/"
+!define APP_NAME "Umbrel Imager"
+!define COMP_NAME "Umbrel Labs"
+#!define WEB_SITE "https://UmbreLabs.gitlab.io/"
 !define VERSION "@IMAGER_VERSION_STR@"
-!define INSTALLER_NAME "imager-${VERSION}.exe"
-!define COPYRIGHT "Raspberry Pi"
-!define DESCRIPTION "Raspberry Pi Imager"
+!define INSTALLER_NAME "umbrel-imager-${VERSION}.exe"
+!define COPYRIGHT "Umbrel Labs"
+!define DESCRIPTION "Umbrel Imager"
 !define MAIN_APP_EXE "umbrel-imager.exe"
 !define INSTALL_TYPE "SetShellVarContext current"
 !define REG_ROOT "HKCU"
@@ -38,7 +38,7 @@ OutFile "${INSTALLER_NAME}"
 BrandingText "${APP_NAME}"
 XPStyle on
 InstallDirRegKey "${REG_ROOT}" "${REG_APP_PATH}" ""
-InstallDir "$PROGRAMFILES\Raspberry Pi Imager"
+InstallDir "$PROGRAMFILES\Umbrel Imager"
 
 ######################################################################
 
@@ -115,14 +115,14 @@ InstallDir "$PROGRAMFILES\Raspberry Pi Imager"
 !insertmacro MUI_LANGUAGE "Dutch"
 !insertmacro MUI_LANGUAGE "Italian"
 
-LangString termMsg ${LANG_ENGLISH} "Raspberry Pi Imager seems to be running and busy.$\nDo you want to terminate process?"
-LangString stopMsg ${LANG_ENGLISH} "Stopping Raspberry Pi Imager"
+LangString termMsg ${LANG_ENGLISH} "Umbrel Imager seems to be running and busy.$\nDo you want to terminate process?"
+LangString stopMsg ${LANG_ENGLISH} "Stopping Umbrel Imager"
 LangString win7Msg ${LANG_ENGLISH} "Windows 7 or above required"
-LangString termMsg ${LANG_DUTCH} "Raspberry Pi Imager is momenteel actief.$\nWilt u het programma afsluiten?"
-LangString stopMsg ${LANG_DUTCH} "Bezig met afsluiten Raspberry Pi Imager"
+LangString termMsg ${LANG_DUTCH} "Umbrel Imager is momenteel actief.$\nWilt u het programma afsluiten?"
+LangString stopMsg ${LANG_DUTCH} "Bezig met afsluiten Umbrel Imager"
 LangString win7Msg ${LANG_DUTCH} "Minimaal Windows 7 is vereist"
-LangString termMsg ${LANG_ITALIAN} "Raspberry Pi Imager sembra essere in esecuzione e occupato.$\nVuoi terminare il processo Raspberry Pi Imager?"
-LangString stopMsg ${LANG_ITALIAN} "Chiusura processo Raspberry Pi Imager"
+LangString termMsg ${LANG_ITALIAN} "Umbrel Imager sembra essere in esecuzione e occupato.$\nVuoi terminare il processo Umbrel Imager?"
+LangString stopMsg ${LANG_ITALIAN} "Chiusura processo Umbrel Imager"
 LangString win7Msg ${LANG_ITALIAN} "Per l'esecuzione del programma è richiesto Windows 7 o versioni successive"
 
 ######################################################################
@@ -659,12 +659,12 @@ WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "URLInfoAbout" "${WEB_SITE}"
 !endif
 
 
-WriteRegStr SHCTX "Software\Classes\.zip\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
-WriteRegStr SHCTX "Software\Classes\.gz\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
-WriteRegStr SHCTX "Software\Classes\.xz\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
-WriteRegStr SHCTX "Software\Classes\.img\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
-WriteRegStr SHCTX "Software\Classes\RPI_IMAGINGUTILITY\shell\open" "FriendlyAppName" "Raspberry Pi Imager"
-WriteRegStr SHCTX "Software\Classes\RPI_IMAGINGUTILITY\shell\open\command" "" '"$INSTDIR\umbrel-imager.exe" "%1"'
+WriteRegStr SHCTX "Software\Classes\.zip\OpenWithProgIds" "UMBREL_IMAGINGUTILITY" ""
+WriteRegStr SHCTX "Software\Classes\.gz\OpenWithProgIds" "UMBREL_IMAGINGUTILITY" ""
+WriteRegStr SHCTX "Software\Classes\.xz\OpenWithProgIds" "UMBREL_IMAGINGUTILITY" ""
+WriteRegStr SHCTX "Software\Classes\.img\OpenWithProgIds" "UMBREL_IMAGINGUTILITY" ""
+WriteRegStr SHCTX "Software\Classes\UMBREL_IMAGINGUTILITY\shell\open" "FriendlyAppName" "Umbrel Imager"
+WriteRegStr SHCTX "Software\Classes\UMBREL_IMAGINGUTILITY\shell\open\command" "" '"$INSTDIR\umbrel-imager.exe" "%1"'
 
 SectionEnd
 
@@ -1104,11 +1104,11 @@ DeleteRegKey ${REG_ROOT} "${REG_APP_PATH}"
 DeleteRegKey ${REG_ROOT} "${UNINSTALL_PATH}"
 
 # File associations
-DeleteRegValue SHCTX "Software\Classes\.zip\OpenWithProgIds" "RPI_IMAGINGUTILITY"
-DeleteRegValue SHCTX "Software\Classes\.gz\OpenWithProgIds" "RPI_IMAGINGUTILITY"
-DeleteRegValue SHCTX "Software\Classes\.xz\OpenWithProgIds" "RPI_IMAGINGUTILITY"
-DeleteRegValue SHCTX "Software\Classes\.zip\OpenWithProgIds" "RPI_IMAGINGUTILITY"
-DeleteRegKey SHCTX "Software\Classes\RPI_IMAGINGUTILITY"
+DeleteRegValue SHCTX "Software\Classes\.zip\OpenWithProgIds" "UMBREL_IMAGINGUTILITY"
+DeleteRegValue SHCTX "Software\Classes\.gz\OpenWithProgIds" "UMBREL_IMAGINGUTILITY"
+DeleteRegValue SHCTX "Software\Classes\.xz\OpenWithProgIds" "UMBREL_IMAGINGUTILITY"
+DeleteRegValue SHCTX "Software\Classes\.zip\OpenWithProgIds" "UMBREL_IMAGINGUTILITY"
+DeleteRegKey SHCTX "Software\Classes\UMBREL_IMAGINGUTILITY"
 
 DeleteRegKey ${REG_ROOT} ""
 

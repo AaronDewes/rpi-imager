@@ -6,8 +6,8 @@
 
 !define APP_NAME "Umbrel Imager"
 !define COMP_NAME "Umbrel Labs"
-#!define WEB_SITE "https://UmbreLabs.gitlab.io/"
-!define VERSION "@IMAGER_VERSION_STR@"
+!define WEB_SITE "https://UmbreLabs.gitlab.io/"
+!define VERSION "0.2.0.0"
 !define INSTALLER_NAME "umbrel-imager-${VERSION}.exe"
 !define COPYRIGHT "Umbrel Labs"
 !define DESCRIPTION "Umbrel Imager"
@@ -22,7 +22,7 @@
 
 ######################################################################
 
-VIProductVersion "@IMAGER_VERSION_MAJOR@.@IMAGER_VERSION_MINOR@.0.0"
+VIProductVersion "0.2.0.0"
 VIAddVersionKey "ProductName"  "${APP_NAME}"
 VIAddVersionKey "CompanyName"  "${COMP_NAME}"
 VIAddVersionKey "LegalCopyright"  "${COPYRIGHT}"
@@ -114,10 +114,14 @@ InstallDir "$PROGRAMFILES\Umbrel Imager"
 !insertmacro MUI_LANGUAGE "English"
 !insertmacro MUI_LANGUAGE "Dutch"
 !insertmacro MUI_LANGUAGE "Italian"
+!insertmacro MUI_LANGUAGE "German"
 
 LangString termMsg ${LANG_ENGLISH} "Umbrel Imager seems to be running and busy.$\nDo you want to terminate process?"
 LangString stopMsg ${LANG_ENGLISH} "Stopping Umbrel Imager"
 LangString win7Msg ${LANG_ENGLISH} "Windows 7 or above required"
+LangString termMsg ${LANG_GERMAN} "Umbrel Imager läuft gerade.$\nSoll es beendet werden?"
+LangString stopMsg ${LANG_GERMAN} "Umbrel Imager wird beendet"
+LangString win7Msg ${LANG_GERMAN} "Windows 7 oder neuer benötigt"
 LangString termMsg ${LANG_DUTCH} "Umbrel Imager is momenteel actief.$\nWilt u het programma afsluiten?"
 LangString stopMsg ${LANG_DUTCH} "Bezig met afsluiten Umbrel Imager"
 LangString win7Msg ${LANG_DUTCH} "Minimaal Windows 7 is vereist"
@@ -639,11 +643,11 @@ CreateShortCut "$SMPROGRAMS\$SM_Folder\${APP_NAME} Website.lnk" "$INSTDIR\${APP_
 !endif
 
 !ifndef REG_START_MENU
-CreateDirectory "$SMPROGRAMS\Raspberry Pi"
-CreateShortCut "$SMPROGRAMS\Raspberry Pi\${APP_NAME}.lnk" "$INSTDIR\${MAIN_APP_EXE}"
+CreateDirectory "$SMPROGRAMS\Umbrel Labs"
+CreateShortCut "$SMPROGRAMS\Umbrel Labs\${APP_NAME}.lnk" "$INSTDIR\${MAIN_APP_EXE}"
 !ifdef WEB_SITE
 WriteIniStr "$INSTDIR\${APP_NAME} website.url" "InternetShortcut" "URL" "${WEB_SITE}"
-CreateShortCut "$SMPROGRAMS\Raspberry Pi\${APP_NAME} Website.lnk" "$INSTDIR\${APP_NAME} website.url"
+CreateShortCut "$SMPROGRAMS\Umbrel Labs\${APP_NAME} Website.lnk" "$INSTDIR\${APP_NAME} website.url"
 !endif
 !endif
 

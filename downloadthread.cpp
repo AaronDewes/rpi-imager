@@ -127,7 +127,7 @@ bool DownloadThread::_openAndPrepareDevice()
 
     if (std::regex_match(_filename.constData(), m, windriveregex))
     {
-        QByteArray _nr = QByteArray::fromStdString(m[1]);
+        _nr = QByteArray::fromStdString(m[1]);
 
         if (!_nr.isEmpty()) {
             qDebug() << "Removing partition table from Windows drive #" << _nr << "(" << _filename << ")";
@@ -807,9 +807,22 @@ void DownloadThread::setImageCustomization(const QByteArray &config, const QByte
 bool DownloadThread::_customizeImage()
 {
     QString folder;
+    std::vector<std::string> mountpoints;
     QByteArray devlower = _filename.toLower();
 
     emit preparationStatusUpdate(tr("Waiting for FAT partition to be mounted"));
+
+#ifdef Q_OS_WIN
+    qDebug() << "Running diskpart rescan";
+    QProcess proc;
+    proc.setProcessChannelMode(proc.MergedChannels);
+    proc.start("diskpart");
+    proc.waitForStarted();
+    proc.write("rescan\r\n");
+    proc.closeWriteChannel();
+    proc.waitForFinished();
+    qDebug() << proc.readAll();
+#endif
 
     /* See if OS auto-mounted the device */
     for (int tries = 0; tries < 3; tries++)
@@ -820,16 +833,40 @@ bool DownloadThread::_customizeImage()
         {
             if (QByteArray::fromStdString(i.device).toLower() == devlower && i.mountpoints.size())
             {
-                folder = QByteArray::fromStdString(i.mountpoints.front());
+                mountpoints = i.mountpoints;
                 break;
             }
         }
     }
 
+#ifdef Q_OS_WIN
+    if (mountpoints.empty() && !_nr.isEmpty()) {
+        qDebug() << "Windows did not assign drive letter automatically. Ask diskpart to do so manually.";
+        proc.start("diskpart");
+        proc.waitForStarted();
+        proc.write("select disk "+_nr+"\r\n"
+                        "select partition 1\r\n"
+                        "assign\r\n");
+        proc.closeWriteChannel();
+        proc.waitForFinished();
+        qDebug() << proc.readAll();
+
+        auto l = Drivelist::ListStorageDevices();
+        for (auto i : l)
+        {
+            if (QByteArray::fromStdString(i.device).toLower() == devlower && i.mountpoints.size())
+            {
+                mountpoints = i.mountpoints;
+                break;
+            }
+        }
+    }
+#endif
+
 #ifdef Q_OS_LINUX
     bool manualmount = false;
 
-    if (folder.isEmpty())
+    if (mountpoints.empty())
     {
         /* Manually mount folder */
         manualmount = true;
@@ -844,7 +881,7 @@ bool DownloadThread::_customizeImage()
             /* Not running as root, try to outsource mounting to udisks2 */
     #ifndef QT_NO_DBUS
             UDisks2Api udisks2;
-            folder = udisks2.mountDevice(fatpartition);
+            mountpoints.push_back(udisks2.mountDevice(fatpartition).toStdString());
     #endif
         }
         else
@@ -852,8 +889,8 @@ bool DownloadThread::_customizeImage()
             /* Running as root, attempt running mount directly */
             QTemporaryDir td;
             QStringList args;
-            folder = td.path();
-            args << fatpartition << folder;
+            mountpoints.push_back(td.path().toStdString());
+            args << "-t" << "vfat" << fatpartition << td.path();
 
             if (QProcess::execute("mount", args) != 0)
             {
@@ -865,7 +902,7 @@ bool DownloadThread::_customizeImage()
     }
 #endif
 
-    if (folder.isEmpty())
+    if (mountpoints.empty())
     {
         //
         qDebug() << "drive info. searching for:" << devlower;
@@ -883,14 +920,46 @@ bool DownloadThread::_customizeImage()
         return false;
     }
 
+    /* Some operating system take longer to complete mounting FAT32
+       wait up to 3 seconds for config.txt file to appear */
+    QString configFilename;
+    bool foundFile = false;
+
+    for (int tries = 0; tries < 3; tries++)
+    {
+        /* Search all mountpoints, as on some systems FAT partition
+           may not be first volume */
+        for (auto mp : mountpoints)
+        {
+            folder = QString::fromStdString(mp);
+            if (folder.right(1) == '\\')
+                folder.chop(1);
+            configFilename = folder+"/config.txt";
+
+            if (QFile::exists(configFilename))
+            {
+                foundFile = true;
+                break;
+            }
+        }
+        if (foundFile)
+            break;
+        QThread::sleep(1);
+    }
+
+    if (!foundFile)
+    {
+        emit error(tr("Unable to customize. File '%1' does not exist.").arg(configFilename));
+        return false;
+    }
+
     emit preparationStatusUpdate(tr("Customizing image"));
 
     if (!_firstrun.isEmpty())
     {
         QFile f(folder+"/firstrun.sh");
-        if (f.open(f.WriteOnly))
+        if (f.open(f.WriteOnly) && f.write(_firstrun) == _firstrun.length())
         {
-            f.write(_firstrun);
             f.close();
         }
         else
@@ -906,8 +975,8 @@ bool DownloadThread::_customizeImage()
         configItems.removeAll("");
         QByteArray config;
 
-        QFile f(folder+"/config.txt");
-        if (f.exists() && f.open(f.ReadOnly))
+        QFile f(configFilename);
+        if (f.open(f.ReadOnly))
         {
             config = f.readAll();
             f.close();
@@ -929,9 +998,8 @@ bool DownloadThread::_customizeImage()
             }
         }
 
-        if (f.open(f.WriteOnly))
+        if (f.open(f.WriteOnly) && f.write(config) == config.length())
         {
-            f.write(config);
             f.close();
         }
         else
@@ -953,9 +1021,8 @@ bool DownloadThread::_customizeImage()
         }
 
         cmdline += _cmdline;
-        if (f.open(f.WriteOnly))
+        if (f.open(f.WriteOnly) && f.write(cmdline) == cmdline.length())
         {
-            f.write(cmdline);
             f.close();
         }
         else

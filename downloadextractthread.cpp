@@ -138,7 +138,8 @@ void DownloadExtractThread::extractImageRun()
     int r;
 
     archive_read_support_filter_all(a);
-    archive_read_support_format_all(a);
+    archive_read_support_format_zip(a);
+    archive_read_support_format_7zip(a);
     archive_read_support_format_raw(a); // for .gz and such
     archive_read_open(a, this, NULL, &DownloadExtractThread::_archive_read, &DownloadExtractThread::_archive_close);
 
@@ -192,6 +193,25 @@ void DownloadExtractThread::extractImageRun()
     archive_read_free(a);
 }
 
+#ifdef Q_OS_LINUX
+/* Returns true if folder lives on a different device than parent directory */
+inline bool isMountPoint(const QString &folder)
+{
+    struct stat statFolder, statParent;
+    QFileInfo fi(folder);
+    QByteArray folderAscii = folder.toLatin1();
+    QByteArray parentDir   = fi.dir().path().toLatin1();
+
+    if ( ::stat(folderAscii.constData(), &statFolder) == -1
+         || ::stat(parentDir.constData(), &statParent) == -1)
+    {
+        return false;
+    }
+
+    return (statFolder.st_dev != statParent.st_dev);
+}
+#endif
+
 void DownloadExtractThread::extractMultiFileRun()
 {
     QString folder;
@@ -227,7 +247,7 @@ void DownloadExtractThread::extractMultiFileRun()
             fatpartition += "p1";
         else
             fatpartition += "1";
-        args << fatpartition << folder;
+        args << "-t" << "vfat" << fatpartition << folder;
 
         if (QProcess::execute("mount", args) != 0)
         {
@@ -236,6 +256,16 @@ void DownloadExtractThread::extractMultiFileRun()
         }
         td.setAutoRemove(false);
         manualmount = true;
+    }
+
+    /* When run under some container environments -even when udisks2 said
+       it completed mounting the fs- we may have to wait a bit more
+       until mountpoint is available in sandbox which lags behind */
+    for (int tries=0; tries<3; tries++)
+    {
+        if (isMountPoint(folder))
+            break;
+        QThread::sleep(1);
     }
 #endif
 

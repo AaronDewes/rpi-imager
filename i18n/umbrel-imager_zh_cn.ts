@@ -4,28 +4,28 @@
 <context>
     <name>DownloadExtractThread</name>
     <message>
-        <location filename="../downloadextractthread.cpp" line="166"/>
+        <location filename="../downloadextractthread.cpp" line="167"/>
         <source>Error writing to storage</source>
         <translation>写入存储时出错</translation>
     </message>
     <message>
-        <location filename="../downloadextractthread.cpp" line="188"/>
-        <location filename="../downloadextractthread.cpp" line="348"/>
+        <location filename="../downloadextractthread.cpp" line="189"/>
+        <location filename="../downloadextractthread.cpp" line="349"/>
         <source>Error extracting archive: %1</source>
         <translation>解压 %1 时出错</translation>
     </message>
     <message>
-        <location filename="../downloadextractthread.cpp" line="234"/>
+        <location filename="../downloadextractthread.cpp" line="235"/>
         <source>Error mounting FAT32 partition</source>
         <translation>挂载FAT32分区错误</translation>
     </message>
     <message>
-        <location filename="../downloadextractthread.cpp" line="244"/>
+        <location filename="../downloadextractthread.cpp" line="245"/>
         <source>Operating system did not mount FAT32 partition</source>
         <translation>操作系统未挂载FAT32分区</translation>
     </message>
     <message>
-        <location filename="../downloadextractthread.cpp" line="267"/>
+        <location filename="../downloadextractthread.cpp" line="268"/>
         <source>Error changing to directory &apos;%1&apos;</source>
         <translation>进入文件夹 “%1” 错误</translation>
     </message>
@@ -65,12 +65,12 @@
     <message>
         <location filename="../downloadthread.cpp" line="260"/>
         <source>discarding existing data on drive</source>
-        <translation type="unfinished"></translation>
+        <translation>删除现有数据</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="280"/>
         <source>zeroing out first and last MB of drive</source>
-        <translation type="unfinished"></translation>
+        <translation>清空驱动器未使用的数据</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="286"/>
@@ -85,37 +85,37 @@
     <message>
         <location filename="../downloadthread.cpp" line="812"/>
         <source>Waiting for FAT partition to be mounted</source>
-        <translation type="unfinished"></translation>
+        <translation>等待FAT分区挂载</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="860"/>
         <source>Error mounting FAT32 partition</source>
-        <translation type="unfinished">挂载FAT32分区错误</translation>
+        <translation>挂载FAT32分区错误</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="882"/>
         <source>Operating system did not mount FAT32 partition</source>
-        <translation type="unfinished">操作系统未挂载FAT32分区</translation>
+        <translation>操作系统未能挂载FAT32分区</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="886"/>
         <source>Customizing image</source>
-        <translation type="unfinished"></translation>
+        <translation>自定义镜像</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="898"/>
         <source>Error creating firstrun.sh on FAT partition</source>
-        <translation type="unfinished"></translation>
+        <translation>在FAT分区上创建firstrun.sh脚本文件时出错</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="939"/>
         <source>Error writing to config.txt on FAT partition</source>
-        <translation type="unfinished"></translation>
+        <translation>在FAT分区上写入config.txt时出错</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="963"/>
         <source>Error writing to cmdline.txt on FAT partition</source>
-        <translation type="unfinished"></translation>
+        <translation>在FAT分区上写入cmdline.txt时出错</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="398"/>
@@ -124,8 +124,8 @@
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="403"/>
-        <source>Controlled Folder Access seems to be enabled. Please add both umbrel-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
-        <translation>受控文件夹访问似乎已启用。 请将umbrel-imager.exe和fat32format.exe都添加到允许的应用程序列表中，然后重试。</translation>
+        <source>Controlled Folder Access seems to be enabled. Please add both rpi-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
+        <translation>受控文件夹访问似乎已启用。 请将rpi-imager.exe和fat32format.exe都添加到允许的应用程序列表中，然后重试。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="409"/>
@@ -135,7 +135,7 @@
     <message>
         <location filename="../downloadthread.cpp" line="428"/>
         <source>Error downloading: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>下载文件错误，已下载：%1</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="647"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../downloadthread.cpp" line="113"/>
         <source>opening drive</source>
-        <translation type="unfinished"></translation>
+        <translation>打开驱动器</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="298"/>
@@ -165,7 +165,7 @@
     <message>
         <location filename="../downloadthread.cpp" line="356"/>
         <source>starting download</source>
-        <translation type="unfinished"></translation>
+        <translation>开始下载</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="680"/>
@@ -236,22 +236,22 @@
 <context>
     <name>ImageWriter</name>
     <message>
-        <location filename="../imagewriter.cpp" line="179"/>
+        <location filename="../imagewriter.cpp" line="182"/>
         <source>Storage capacity is not large enough.&lt;br&gt;Needs to be at least %1 GB.</source>
         <translation>存储容量不足。&lt;br&gt;至少需要%1 GB的空白空间</translation>
     </message>
     <message>
-        <location filename="../imagewriter.cpp" line="185"/>
+        <location filename="../imagewriter.cpp" line="188"/>
         <source>Input file is not a valid disk image.&lt;br&gt;File size %1 bytes is not a multiple of 512 bytes.</source>
         <translation>输入文件不是有效的磁盘映像。&lt;br&gt;文件大小%1字节不是512字节的倍数。</translation>
     </message>
     <message>
-        <location filename="../imagewriter.cpp" line="361"/>
+        <location filename="../imagewriter.cpp" line="370"/>
         <source>Downloading and writing image</source>
         <translation>下载和写入镜像</translation>
     </message>
     <message>
-        <location filename="../imagewriter.cpp" line="494"/>
+        <location filename="../imagewriter.cpp" line="503"/>
         <source>Select image</source>
         <translation>选择镜像</translation>
     </message>
@@ -261,7 +261,7 @@
     <message>
         <location filename="../localfileextractthread.cpp" line="34"/>
         <source>opening image file</source>
-        <translation type="unfinished"></translation>
+        <translation>导入系统镜像</translation>
     </message>
     <message>
         <location filename="../localfileextractthread.cpp" line="39"/>
@@ -290,109 +290,129 @@
 <context>
     <name>OptionsPopup</name>
     <message>
-        <location filename="../OptionsPopup.qml" line="73"/>
+        <location filename="../OptionsPopup.qml" line="74"/>
         <source>Advanced options</source>
-        <translation type="unfinished"></translation>
+        <translation>高级设置</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="90"/>
-        <source>Image customization options (for this session only)</source>
-        <translation type="unfinished"></translation>
+        <location filename="../OptionsPopup.qml" line="91"/>
+        <source>Image customization options</source>
+        <translation>镜像自定义选项</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="98"/>
+        <location filename="../OptionsPopup.qml" line="99"/>
+        <source>for this session only</source>
+        <translation>仅限本次</translation>
+    </message>
+    <message>
+        <location filename="../OptionsPopup.qml" line="100"/>
+        <source>to always use</source>
+        <translation>永久保存</translation>
+    </message>
+    <message>
+        <location filename="../OptionsPopup.qml" line="112"/>
         <source>Disable overscan</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用扫描</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="102"/>
-        <source>Set hostname</source>
-        <translation type="unfinished"></translation>
+        <location filename="../OptionsPopup.qml" line="117"/>
+        <source>Set hostname:</source>
+        <translation>设置主机名：</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="124"/>
+        <location filename="../OptionsPopup.qml" line="136"/>
         <source>Enable SSH</source>
-        <translation type="unfinished"></translation>
+        <translation>开启SSH服务</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="145"/>
+        <location filename="../OptionsPopup.qml" line="155"/>
         <source>Use password authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>使用密码登录</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="161"/>
-        <source>Set password for &apos;umbrel&apos; user:</source>
-        <translation type="unfinished"></translation>
+        <location filename="../OptionsPopup.qml" line="171"/>
+        <source>Set password for &apos;pi&apos; user:</source>
+        <translation>设置&apos;pi&apos;用户的密码：</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="173"/>
+        <location filename="../OptionsPopup.qml" line="193"/>
         <source>Allow public-key authentication only</source>
-        <translation type="unfinished"></translation>
+        <translation>只允许使用公匙登录</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="188"/>
+        <location filename="../OptionsPopup.qml" line="208"/>
         <source>Set authorized_keys for &apos;pi&apos;:</source>
-        <translation type="unfinished"></translation>
+        <translation>设置pi用户的登录密匙：</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="200"/>
+        <location filename="../OptionsPopup.qml" line="220"/>
         <source>Configure wifi</source>
-        <translation type="unfinished"></translation>
+        <translation>配置WiFi</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="219"/>
+        <location filename="../OptionsPopup.qml" line="239"/>
         <source>SSID:</source>
-        <translation type="unfinished"></translation>
+        <translation>热点名：</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="228"/>
+        <location filename="../OptionsPopup.qml" line="248"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>密码：</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="240"/>
+        <location filename="../OptionsPopup.qml" line="260"/>
         <source>Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>显示密码</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="245"/>
+        <location filename="../OptionsPopup.qml" line="265"/>
         <source>Wifi country:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../OptionsPopup.qml" line="256"/>
-        <source>Set locale settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../OptionsPopup.qml" line="266"/>
-        <source>Time zone:</source>
-        <translation type="unfinished"></translation>
+        <translation>WIFI国家</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="276"/>
+        <source>Set locale settings</source>
+        <translation>语言设置</translation>
+    </message>
+    <message>
+        <location filename="../OptionsPopup.qml" line="286"/>
+        <source>Time zone:</source>
+        <translation>时区：</translation>
+    </message>
+    <message>
+        <location filename="../OptionsPopup.qml" line="296"/>
         <source>Keyboard layout:</source>
-        <translation type="unfinished"></translation>
+        <translation>键盘布局：</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="289"/>
+        <location filename="../OptionsPopup.qml" line="306"/>
+        <source>Skip first-run wizard</source>
+        <translation>跳过首次启动向导</translation>
+    </message>
+    <message>
+        <location filename="../OptionsPopup.qml" line="313"/>
         <source>Persistent settings</source>
-        <translation type="unfinished"></translation>
+        <translation>永久设置</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="297"/>
+        <location filename="../OptionsPopup.qml" line="321"/>
         <source>Play sound when finished</source>
-        <translation type="unfinished"></translation>
+        <translation>完成后播放提示音</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="301"/>
+        <location filename="../OptionsPopup.qml" line="325"/>
         <source>Eject media when finished</source>
-        <translation type="unfinished"></translation>
+        <translation>完成后弹出磁盘</translation>
     </message>
     <message>
-        <location filename="../OptionsPopup.qml" line="314"/>
+        <location filename="../OptionsPopup.qml" line="329"/>
+        <source>Enable telemetry</source>
+        <translation>启用遥测</translation>
+    </message>
+    <message>
+        <location filename="../OptionsPopup.qml" line="342"/>
         <source>SAVE</source>
-        <translation type="unfinished"></translation>
+        <translation>保存</translation>
     </message>
 </context>
 <context>
@@ -404,23 +424,53 @@
     </message>
 </context>
 <context>
-    <name>main</name>
+    <name>UseSavedSettingsPopup</name>
     <message>
-        <source>Raspberry Pi Imager v%1</source>
-        <translation type="vanished">树莓派镜像烧录 v%1</translation>
+        <location filename="../UseSavedSettingsPopup.qml" line="71"/>
+        <source>Warning: advanced settings set</source>
+        <translation>警告：高级设置已设置</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="774"/>
+        <location filename="../UseSavedSettingsPopup.qml" line="85"/>
+        <source>Would you like to apply the image customization settings saved earlier?</source>
+        <translation>您要应用之前保存的自定义镜像设置吗？</translation>
+    </message>
+    <message>
+        <location filename="../UseSavedSettingsPopup.qml" line="94"/>
+        <source>NO, CLEAR SETTINGS</source>
+        <translation>清空所有设置</translation>
+    </message>
+    <message>
+        <location filename="../UseSavedSettingsPopup.qml" line="106"/>
+        <source>YES</source>
+        <translation>是</translation>
+    </message>
+    <message>
+        <location filename="../UseSavedSettingsPopup.qml" line="118"/>
+        <source>EDIT SETTINGS</source>
+        <translation>编辑设置</translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="../main.qml" line="23"/>
+        <source>Raspberry Pi Imager v%1</source>
+        <translation>树莓派镜像烧录 v%1</translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="745"/>
         <source>Are you sure you want to quit?</source>
         <translation>你确定你要退出吗？</translation>
     </message>
     <message>
+        <location filename="../main.qml" line="746"/>
         <source>Raspberry Pi Imager is still busy.&lt;br&gt;Are you sure you want to quit?</source>
-        <translation type="vanished">Raspberry Pi Imager还未完成任务。&lt;br&gt;您确定要退出吗？</translation>
+        <translation>Raspberry Pi Imager还未完成任务。&lt;br&gt;您确定要退出吗？</translation>
     </message>
     <message>
         <location filename="../main.qml" line="98"/>
-        <location filename="../main.qml" line="344"/>
+        <location filename="../main.qml" line="314"/>
         <source>Operating System</source>
         <translation>操作系统</translation>
     </message>
@@ -431,35 +481,35 @@
     </message>
     <message>
         <location filename="../main.qml" line="138"/>
-        <location filename="../main.qml" line="627"/>
-        <source>SD Card</source>
+        <location filename="../main.qml" line="598"/>
+        <source>Storage</source>
         <translation>SD卡</translation>
     </message>
     <message>
         <location filename="../main.qml" line="150"/>
-        <location filename="../main.qml" line="921"/>
-        <source>CHOOSE SD CARD</source>
+        <location filename="../main.qml" line="908"/>
+        <source>CHOOSE STORAGE</source>
         <translation>选择SD卡</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="216"/>
+        <location filename="../main.qml" line="163"/>
+        <source>Select this button to change the destination storage device</source>
+        <translation>选择此按钮以更改目标存储设备</translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="180"/>
         <source>WRITE</source>
         <translation>烧录</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="862"/>
+        <location filename="../main.qml" line="849"/>
         <source>Writing... %1%</source>
         <translation>写入中...%1%</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="261"/>
+        <location filename="../main.qml" line="230"/>
         <source>CANCEL WRITE</source>
         <translation>取消写入</translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="23"/>
-        <source>Umbrel Labs Imager v%1</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.qml" line="125"/>
@@ -467,167 +517,142 @@
         <translation>更改操作系统</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="163"/>
         <source>Select this button to change the destination SD card</source>
-        <translation>更改目标SD卡</translation>
+        <translation type="vanished">更改目标SD卡</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="176"/>
-        <source>Additional options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="188"/>
-        <source>CONFIGURE UMBREL OS</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="199"/>
-        <source>Select this button to change a few settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="221"/>
+        <location filename="../main.qml" line="185"/>
         <source>Select this button to start writing the image</source>
         <translation>开始刷写</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="264"/>
-        <location filename="../main.qml" line="859"/>
+        <location filename="../main.qml" line="233"/>
+        <location filename="../main.qml" line="846"/>
         <source>Cancelling...</source>
         <translation>取消中...</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="276"/>
+        <location filename="../main.qml" line="245"/>
         <source>CANCEL VERIFY</source>
         <translation>取消验证</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="279"/>
-        <location filename="../main.qml" line="882"/>
-        <location filename="../main.qml" line="939"/>
+        <location filename="../main.qml" line="248"/>
+        <location filename="../main.qml" line="869"/>
+        <location filename="../main.qml" line="926"/>
         <source>Finalizing...</source>
         <translation>完成中...</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="444"/>
-        <location filename="../main.qml" line="915"/>
+        <location filename="../main.qml" line="414"/>
+        <location filename="../main.qml" line="902"/>
         <source>Erase</source>
         <translation>擦除</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="445"/>
+        <location filename="../main.qml" line="415"/>
         <source>Format card as FAT32</source>
         <translation>格式化SD卡为FAT32格式</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="452"/>
+        <location filename="../main.qml" line="422"/>
         <source>Use custom</source>
         <translation>使用自定义镜像</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="453"/>
+        <location filename="../main.qml" line="423"/>
         <source>Select a custom .img from your computer</source>
         <translation>使用下载的系统镜像文件烧录</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="519"/>
+        <location filename="../main.qml" line="490"/>
         <source>Local file</source>
         <translation>本地文件</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="521"/>
-        <source>Online</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="732"/>
+        <location filename="../main.qml" line="703"/>
         <source>[WRITE PROTECTED]</source>
         <translation>[写保护]</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="775"/>
-        <source>Umbrel Labs Imager is still busy.&lt;br&gt;Are you sure you want to quit?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.qml" line="786"/>
+        <location filename="../main.qml" line="757"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="792"/>
+        <location filename="../main.qml" line="763"/>
         <source>Preparing to write...</source>
-        <translation type="unfinished"></translation>
+        <translation>准备写入...</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="805"/>
+        <location filename="../main.qml" line="776"/>
         <source>All existing data on &apos;%1&apos; will be erased.&lt;br&gt;Are you sure you want to continue?</source>
         <translation>&apos;%1&apos;上的所有现有数据将被删除。&lt;br&gt;确定要继续吗？</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="816"/>
+        <location filename="../main.qml" line="787"/>
         <source>Update available</source>
-        <translation type="unfinished"></translation>
+        <translation>检测到更新</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="817"/>
+        <location filename="../main.qml" line="788"/>
         <source>There is a newer version of Imager available.&lt;br&gt;Would you like to visit the website to download it?</source>
-        <translation type="unfinished"></translation>
+        <translation>有较新版本的rpi-imager。&lt;br&gt;需要下载更新吗？</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="892"/>
+        <location filename="../main.qml" line="879"/>
         <source>Preparing to write... (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>写入中 (%i)</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="916"/>
+        <location filename="../main.qml" line="903"/>
         <source>&lt;b&gt;%1&lt;/b&gt; has been erased&lt;br&gt;&lt;br&gt;You can now remove the SD card from the reader</source>
         <translation>&lt;b&gt;%1 &lt;/ b&gt;已被删除&lt;br&gt; &lt;br&gt;您现在可以从读取器中取出SD卡</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="955"/>
+        <location filename="../main.qml" line="942"/>
         <source>Error parsing os_list.json</source>
         <translation>解析 os_list.json 错误</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1055"/>
+        <location filename="../main.qml" line="1043"/>
         <source>Connect an USB stick containing images first.&lt;br&gt;The images must be located in the root folder of the USB stick.</source>
         <translation>连接包含镜像的U盘。&lt;br&gt;镜像必须位于U盘的根文件夹中。</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1070"/>
+        <location filename="../main.qml" line="1058"/>
         <source>SD card is write protected.&lt;br&gt;Push the lock switch on the left side of the card upwards, and try again.</source>
         <translation>SD卡具有写保护。&lt;br&gt;尝试向上推SD卡的左侧的锁定开关，然后重试。</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="404"/>
+        <location filename="../main.qml" line="374"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="405"/>
+        <location filename="../main.qml" line="375"/>
         <source>Go back to main menu</source>
         <translation>回到主页</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="514"/>
+        <location filename="../main.qml" line="485"/>
         <source>Released: %1</source>
         <translation>解压中...%1</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="517"/>
+        <location filename="../main.qml" line="488"/>
         <source>Cached on your computer</source>
         <translation>在你的电脑上缓存</translation>
     </message>
     <message>
+        <location filename="../main.qml" line="492"/>
         <source>Online - %1 GB download</source>
-        <translation type="vanished">已下载：%1 GB</translation>
+        <translation>已下载：%1 GB</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="678"/>
-        <location filename="../main.qml" line="730"/>
-        <location filename="../main.qml" line="736"/>
+        <location filename="../main.qml" line="649"/>
+        <location filename="../main.qml" line="701"/>
+        <location filename="../main.qml" line="707"/>
         <source>Mounted as %1</source>
         <translation>挂载在：%1 上</translation>
     </message>
@@ -640,27 +665,27 @@
         <translation type="vanished">继续</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="841"/>
+        <location filename="../main.qml" line="828"/>
         <source>Error downloading OS list from Internet</source>
         <translation>下载镜像列表错误</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="885"/>
+        <location filename="../main.qml" line="872"/>
         <source>Verifying... %1%</source>
         <translation>验证文件中...%1%</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="907"/>
+        <location filename="../main.qml" line="894"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="914"/>
+        <location filename="../main.qml" line="901"/>
         <source>Write Successful</source>
         <translation>烧录成功</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="918"/>
+        <location filename="../main.qml" line="905"/>
         <source>&lt;b&gt;%1&lt;/b&gt; has been written to &lt;b&gt;%2&lt;/b&gt;&lt;br&gt;&lt;br&gt;You can now remove the SD card from the reader</source>
         <translation>&lt;b&gt;%1&lt;/b&gt; 已经成功烧录到 &lt;b&gt;%2&lt;/b&gt;&lt;br&gt;&lt;br&gt;上了，你可以卸载SD卡了</translation>
     </message>

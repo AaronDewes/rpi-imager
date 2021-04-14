@@ -16,9 +16,9 @@ ApplicationWindow {
     width: imageWriter.isEmbeddedMode() ? -1 : 680
     height: imageWriter.isEmbeddedMode() ? -1 : 420
     minimumWidth: imageWriter.isEmbeddedMode() ? -1 : 680
-    maximumWidth: imageWriter.isEmbeddedMode() ? -1 : 680
+    //maximumWidth: imageWriter.isEmbeddedMode() ? -1 : 680
     minimumHeight: imageWriter.isEmbeddedMode() ? -1 : 420
-    maximumHeight: imageWriter.isEmbeddedMode() ? -1 : 420
+    //maximumHeight: imageWriter.isEmbeddedMode() ? -1 : 420
 
     title: qsTr("Umbrel Labs Imager v%1").arg(imageWriter.constantVersion())
 
@@ -63,7 +63,7 @@ ApplicationWindow {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 fillMode: Image.PreserveAspectFit
-                source: imageWriter.isEmbeddedMode() ? "icons/rpi2-hires.png" : "icons/labs.png"
+                source: window.height > 700 ? "icons/rpi2-hires.png" : "icons/labs.png"
                 width: window.width
                 height: window.height/2
             }
@@ -135,7 +135,7 @@ ApplicationWindow {
                     Text {
                         id: text2
                         color: "#ffffff"
-                        text: qsTr("SD Card")
+                        text: qsTr("Storage")
                         Layout.fillWidth: true
                         Layout.preferredHeight: 17
                         Layout.preferredWidth: 100
@@ -147,7 +147,7 @@ ApplicationWindow {
 
                     Button {
                         id: dstbutton
-                        text: qsTr("CHOOSE SD CARD")
+                        text: qsTr("CHOOSE STORAGE")
                         font.family: roboto.name
                         Layout.minimumHeight: 40
                         Layout.preferredWidth: 100
@@ -160,7 +160,7 @@ ApplicationWindow {
                         Material.background: "#ffffff"
                         Material.foreground: "#5351fb"
                         Accessible.ignored: ospopup.visible || dstpopup.visible
-                        Accessible.description: qsTr("Select this button to change the destination SD card")
+                        Accessible.description: qsTr("Select this button to change the destination storage device")
                         Accessible.onPressAction: clicked()
                     }
                 }
@@ -357,8 +357,8 @@ ApplicationWindow {
 
             Item {
                 clip: true
-                width: oslist.width
-                height: oslist.height
+                Layout.preferredWidth: oslist.width
+                Layout.preferredHeight: oslist.height
 
                 SwipeView {
                     id: osswipeview
@@ -579,7 +579,7 @@ ApplicationWindow {
     }
 
     /*
-      Popup for SD card device selection
+      Popup for storage device selection
      */
     Popup {
         id: dstpopup
@@ -629,7 +629,7 @@ ApplicationWindow {
             spacing: 10
 
             Text {
-                text: qsTr("SD Card")
+                text: qsTr("Storage")
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 Layout.fillWidth: true
@@ -640,8 +640,8 @@ ApplicationWindow {
 
             Item {
                 clip: true
-                width: dstlist.width
-                height: dstlist.height
+                Layout.preferredWidth: dstlist.width
+                Layout.preferredHeight: dstlist.height
 
                 ListView {
                     id: dstlist
@@ -937,9 +937,14 @@ ApplicationWindow {
             msgpopup.text = qsTr("<b>%1</b> has been erased<br><br>You can now remove the SD card from the reader").arg(dstbutton.text)
         else
             msgpopup.text = qsTr("<b>%1</b> has been written to <b>%2</b><br><br>You can now remove the SD card from the reader").arg(osbutton.text).arg(dstbutton.text)
+        if (imageWriter.isEmbeddedMode()) {
+            msgpopup.continueButton = false
+            msgpopup.quitButton = true
+        }
+
         msgpopup.openPopup()
         imageWriter.setDst("")
-        dstbutton.text = qsTr("CHOOSE SD CARD")
+        dstbutton.text = qsTr("CHOOSE STORAGE")
         resetWriteButton()
     }
 
@@ -993,7 +998,7 @@ ApplicationWindow {
             if ("imager" in o) {
                 var imager = o["imager"]
                 if ("latest_version" in imager && "url" in imager) {
-                    if (imageWriter.isVersionNewer(imager["latest_version"])) {
+                    if (!imageWriter.isEmbeddedMode() && imageWriter.isVersionNewer(imager["latest_version"])) {
                         updatepopup.url = imager["url"]
                         updatepopup.openPopup()
                     }

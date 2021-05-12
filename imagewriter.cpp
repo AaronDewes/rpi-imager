@@ -36,6 +36,8 @@
 #endif
 #ifdef Q_OS_DARWIN
 #include <QtNetwork>
+#include <QMessageBox>
+#include <security/security.h>
 #else
 #include "openssl/evp.h"
 #include "openssl/sha.h"
@@ -60,7 +62,16 @@ ImageWriter::ImageWriter(QObject *parent)
 {
     connect(&_polltimer, SIGNAL(timeout()), SLOT(pollProgress()));
 
-    QString platform = QGuiApplication::platformName();
+    QString platform;
+    if (qobject_cast<QGuiApplication*>(QCoreApplication::instance()) )
+    {
+        platform = QGuiApplication::platformName();
+    }
+    else
+    {
+        platform = "cli";
+    }
+
     if (platform == "eglfs" || platform == "linuxfb")
     {
         _embeddedMode = true;
@@ -458,7 +469,7 @@ void ImageWriter::onSuccess()
     emit success();
 
 #ifndef QT_NO_WIDGETS
-    if (_settings.value("beep").toBool())
+    if (_settings.value("beep").toBool() && qobject_cast<QApplication*>(QCoreApplication::instance()) )
     {
         QApplication::beep();
     }
@@ -471,7 +482,7 @@ void ImageWriter::onError(QString msg)
     emit error(msg);
 
 #ifndef QT_NO_WIDGETS
-    if (_settings.value("beep").toBool())
+    if (_settings.value("beep").toBool() && qobject_cast<QApplication*>(QCoreApplication::instance()) )
         QApplication::beep();
 #endif
 }
@@ -875,8 +886,32 @@ QString ImageWriter::getPSK(const QString &ssid)
     return psk;
 
 #else
+#ifdef Q_OS_DARWIN
+    SecKeychainRef keychainRef;
+    QString psk;
+    QByteArray ssidAscii = ssid.toLatin1();
+
+    if (QMessageBox::question(nullptr, "",
+                          tr("Would you like to prefill the wifi password from the system keychain?")) == QMessageBox::Yes)
+    {
+        if (SecKeychainOpen("/Library/Keychains/System.keychain", &keychainRef) == errSecSuccess)
+        {
+            UInt32 resultLen;
+            void *result;
+            if (SecKeychainFindGenericPassword(keychainRef, 0, NULL, ssidAscii.length(), ssidAscii.constData(), &resultLen, &result, NULL) == errSecSuccess)
+            {
+                psk = QByteArray((char *) result, resultLen);
+                SecKeychainItemFreeContent(NULL, result);
+            }
+            CFRelease(keychainRef);
+        }
+    }
+
+    return psk;
+#else
     Q_UNUSED(ssid)
     return QString();
+#endif
 #endif
 }
 
@@ -977,5 +1012,6 @@ bool ImageWriter::hasSavedCustomizationSettings()
 }
 
 void MountUtilsLog(std::string msg) {
-    qDebug() << "mountutils:" << msg.c_str();
+    Q_UNUSED(msg)
+    //qDebug() << "mountutils:" << msg.c_str();
 }
